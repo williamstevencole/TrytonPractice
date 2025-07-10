@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: tryton
+      POSTGRES_PASSWORD: tryton
+      POSTGRES_DB: tryton
+    volumes:
+      - tryton-db-data:/var/lib/postgresql/data
+
+  trytond:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # Forzar plataforma amd64 en macOS ARM
+    platform: linux/amd64
+    depends_on:
+      - db
+    environment:
+      TRYTOND_DATABASE_URI: postgresql://tryton:tryton@db:5432/tryton
+    volumes:
+      - ./trytond.conf:/etc/tryton/trytond.conf:ro
+        # Ejecutar como root para evitar error de user inexistente
+    user: root
+    ports:
+      - "8000:8000"
+
+volumes:
+  tryton-db-data:
