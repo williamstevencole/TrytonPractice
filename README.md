@@ -110,26 +110,8 @@ volumes:
    http://localhost:8000
    ```
 
-## 5. Cliente web SAO (opcional)
-
-1. Instala SAO:
-
-   ```bash
-   npm install -g tryton-sao
-   ```
-
-2. Lánzalo:
-
-   ```bash
-   sao run --server http://localhost:8000
-   ```
-
-3. Abre la URL que muestre SAO.
-
-## 6. Personalización
+## 5. Personalización
 
 - **Módulos**: añade o quita en el `Dockerfile`.
 - **Configuración**: edita `trytond.conf`.
 - **Persistencia**: revisa el volumen `tryton-db-data`.
-
-¡Listo! Con esto Tryton debería funcionar correctamente en macOS ARM y Linux. 🎉

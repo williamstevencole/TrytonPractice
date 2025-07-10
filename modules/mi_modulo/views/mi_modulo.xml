@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<resource>
+  <record model="ir.ui.view" id="view_mi_modelo_form">
+    <field name="name">mi_modelo.form</field>
+    <field name="model">mi_modulo.mi_modelo</field>
+    <field name="type">form</field>
+    <field name="arch" type="xml">
+      <form string="Mi Modelo">
+        <group>
+          <field name="name"/>
+          <field name="description"/>
+        </group>
+      </form>
+    </field>
+  </record>
+</resource>

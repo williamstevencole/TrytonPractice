@@ -12,18 +12,17 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    # Forzar plataforma amd64 en macOS ARM
     platform: linux/amd64
+    user: root
     depends_on:
       - db
     environment:
       TRYTOND_DATABASE_URI: postgresql://tryton:tryton@db:5432/tryton
-    volumes:
-      - ./trytond.conf:/etc/tryton/trytond.conf:ro
-        # Ejecutar como root para evitar error de user inexistente
-    user: root
     ports:
       - "8000:8000"
+    volumes:
+      - ./trytond.conf:/etc/tryton/trytond.conf:ro
+      - ./modules:/opt/trytond/modules:ro
 
 volumes:
   tryton-db-data:
