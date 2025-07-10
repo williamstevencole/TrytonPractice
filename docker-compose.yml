@@ -18,6 +18,7 @@ services:
       - db
     environment:
       TRYTOND_DATABASE_URI: postgresql://tryton:tryton@db:5432/tryton
+      PYTHONPATH: /opt/trytond/modules
     ports:
       - "8000:8000"
     volumes:
